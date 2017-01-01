@@ -1,0 +1,11 @@
+round: Your number is {{ numbers|join(", ") }}. My first card is {{ AlexaNumber1 }}. Do you want to stand or hit? 
+
+draw: My numbers are {{ AlexaNumbers|join(", ") }} My cards add up to {{alexasum}} and your cards adds up to {{usersum}}  It's a draw
+
+win: My numbers are {{ AlexaNumbers|join(", ") }}. My cards add up to {{ alexasum }} And you cards add up to {{usersum}} Nice job you beat me.
+
+lose: My numbers are {{ AlexaNumbers|join(", ") }}. My cards add up to {{ alexasum }} And you cards add up to {{usersum}} Good try, But i win.
+ 
+new round: Your new number is {{ numbers }}. Do you want to stand or hit again? 
+
+stand: my numbers are {{ numbers|join(", ") }}.
