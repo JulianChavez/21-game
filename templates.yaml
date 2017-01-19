@@ -9,3 +9,11 @@ lose: My numbers are {{ AlexaNumbers|join(", ") }}. My cards add up to {{ alexas
 new round: Your new number is {{ numbers }}. Do you want to stand or hit again? 
 
 stand: my numbers are {{ numbers|join(", ") }}.
+
+stop: Stop call activated. Now exiting.
+
+Cancel: Canceling. Now exiting. bam.
+
+No11: Okay. Exiting.
+
+help: Hi. This is a game of twenty one. The objective is to have your hand add up as close to twenty one as possible. If you exceed twenty one you lose or will have a tie if your opponent also exceeded 21. You have the option to say Hit or Stand. Hit means you will recieve another random card, Stand means you are confident with your hand so the round will end and your opponent will show their cards. Would you like to continue playing? Please say Yes or No.  

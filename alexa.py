@@ -17,13 +17,42 @@ logging.getLogger("flask_ask").setLevel(logging.DEBUG)
 @ask.launch
 def new_game():
 
-    welcome_msg = "Let's play twenty one. Ready?"
+    welcome_msg = "Let's play twenty one. Ready, yes or no?"
 
+    session.attributes['help'] = False
     return question(welcome_msg)
 
+@ask.intent("AMAZON.HelpIntent")
+def next_round():
+    session.attributes['help'] = True
+    round_msg = render_template('help')
+    return question(round_msg)
+
+
+
+
+@ask.intent("AMAZON.StopIntent")
+
+def next_round():
+    round_msg = render_template('stop')
+    return statement(round_msg)
+
+@ask.intent("AMAZON.CancelIntent")
+
+def next_round():
+    round_msg = render_template('Cancel')
+    return statement(round_msg)
 
 @ask.intent("YesIntent")
 def next_round():
+
+
+    if(session.attributes['help']):
+        session.attributes['help'] = False
+
+        #session.attributes['numbers']
+        #session.attributes['AlexaNumber1']
+        #session.attributes['AlexaNumbers']
 
     # Make two random numbers from 1 to 11    
     numbers = [randint(1, 11) for _ in range(2)]
@@ -33,6 +62,13 @@ def next_round():
     session.attributes['AlexaNumber1'] = AlexaNumber1
     round_msg = render_template('round', numbers=numbers, AlexaNumber1=AlexaNumber1)
     return question(round_msg)
+
+@ask.intent("NoIntent")
+def next_round():
+    round_msg = render_template('No11')
+    return statement(round_msg)
+
+
 
 @ask.intent("StandIntent")
 def standIntent(): 
